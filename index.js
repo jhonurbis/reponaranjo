@@ -3,6 +3,12 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+const http = require('http');
+const functions = require('firebase-functions');
+
+const host = 'api.worldweatheronline.com';
+const wwoApiKey = '174d1966288642ebb61162416181710';
+
 
 app.get('/version', (req, res) => {
     res.status(200).send("APIAI Webhook Integration. Version 1.0");
@@ -24,7 +30,7 @@ app.post('/webhook', (req, res) => {
       //   fulfillmentText:"la ciudad introducida es "+city,
         //  source: 'Hotel Feedback System'});
      // Call the weather API
-  callWeatherApi(city, date).then((output) => {
+  callWeatherApi(city).then((output) => {
     res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
     res.json({ 'fulfillmentText': `I don't know the weather but I hope it's good!` });
@@ -37,7 +43,7 @@ const server = app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
 
-function callWeatherApi (city, date) {
+function callWeatherApi (city) {
   return new Promise((resolve, reject) => {
     // Create the path for the HTTP request to get the weather
     let path = '/premium/v1/weather.ashx?format=json&num_of_days=1' +
