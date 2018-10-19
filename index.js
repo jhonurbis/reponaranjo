@@ -3,12 +3,6 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const http = require('http');
-const functions = require('firebase-functions');
-
-const host = 'api.worldweatheronline.com';
-const wwoApiKey = '174d1966288642ebb61162416181710';
-
 
 app.get('/version', (req, res) => {
     res.status(200).send("APIAI Webhook Integration. Version 1.0");
@@ -21,9 +15,9 @@ app.get('/', (req, res) => {
 /* Handling all messenges */
 app.post('/webhook', (req, res) => {
     console.log(req.body);
-    
-    var city = req.body.queryResult.parameters['geo-city'];
-    console.log('LOG==> CIUDAD',city);
+    console.log(req.body.result.parameters["geo-city"]);
+    console.log(req.body.result.parameters["comments"]);
+    console.log(req.body.result.parameters["resort-location"]);
     //Persist this in some database
     //Send out an email that new feedback has come in
     res.status(200).json({
