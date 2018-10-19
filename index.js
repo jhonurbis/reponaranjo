@@ -26,15 +26,10 @@ app.post('/webhook', (req, res) => {
     console.log('LOG==> CIUDAD',city);
     //Persist this in some database
     //Send out an email that new feedback has come in
-    //res.status(200).json({
-      //   fulfillmentText:"la ciudad introducida es "+city,
-        //  source: 'Hotel Feedback System'});
-     // Call the weather API
-  callWeatherApi(city).then((output) => {
-    res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
-  }).catch(() => {
-    res.json({ 'fulfillmentText': `I don't know the weather but I hope it's good!` });
-  });
+    res.status(200).json({
+       fulfillmentText:"la ciudad introducida es "+city,
+        source: 'Hotel Feedback System'});
+
     
     
 });
