@@ -12,7 +12,7 @@ var io = require('socket.io')(server);
 /* Handling all messenges */
 app.post('/webhook', function (req, res) => {
     console.log('rcibiii');
-	res.setHeader('content-type', 'application/json');
+    res.setHeader('content-type', 'application/json');
     var city = req.body.queryResult.parameters['geo-city'];
 	let response = "holaaa";
 	let responseObj = {
