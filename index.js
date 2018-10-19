@@ -17,11 +17,11 @@ app.post('/webhook', (req, res) => {
     console.log(req.body);
     
     var city = req.body.queryResult.parameters['geo-city'];
-    console.log(city);
+    console.log('LOG==> CIUDAD',city);
     //Persist this in some database
     //Send out an email that new feedback has come in
     res.status(200).json({
-         fulfillmentText:"hola caracola en"+city,
+         fulfillmentText:"la ciudad introducida es "+city,
           source: 'Hotel Feedback System'});
 });
 
