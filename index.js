@@ -16,8 +16,6 @@ app.get('/', (req, res) => {
 app.post('/webhook', (req, res) => {
     console.log(req.body);
     console.log(req.body.result.parameters["geo-city"]);
-    console.log(req.body.result.parameters["comments"]);
-    console.log(req.body.result.parameters["resort-location"]);
     //Persist this in some database
     //Send out an email that new feedback has come in
     res.status(200).json({
