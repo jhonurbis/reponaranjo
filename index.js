@@ -15,8 +15,8 @@ app.get('/', (req, res) => {
 /* Handling all messenges */
 app.post('/webhook', (req, res) => {
     console.log(req.body);
-    console.log(req.body.result.parameters["geo-city"]);
-    const city = req.body.result.parameters["geo-city"];
+    console.log(req.body.queryResult.parameters["geo-city"]);
+    const city = req.body.queryResult.parameters["geo-city"];
     //Persist this in some database
     //Send out an email that new feedback has come in
     res.status(200).json({
