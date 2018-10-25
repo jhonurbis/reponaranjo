@@ -19,9 +19,19 @@ app.post('/webhook', (req, res) => {
     console.log(req.body);
     console.log(req.body.queryResult.parameters["geo-city"]);
     var city = req.body.queryResult.parameters["geo-city"];// json que envia dialogflow
-    getTiempo();
+  var url = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=174d1966288642ebb61162416181710&q=${city}&format=json&num_of_days=1`;
+
+  
+  request(url, function (error, response, body) {
+  console.log('error:', error); // Print the error if one occurred
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  console.log('body:', body); // Print the HTML for the Google homepage.
+});
+    
+    
     var urlApi = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=174d1966288642ebb61162416181710&q=${city}&format=json&num_of_days=1`;
-// let url = `http://api.openweathermap.org/data/2.5/forecast?q=${ubicacion}&APPID=apikey`;
+      
+    // let url = `http://api.openweathermap.org/data/2.5/forecast?q=${ubicacion}&APPID=apikey`;
     console.log("url-api"+urlApi);
   
     
@@ -38,15 +48,6 @@ app.post('/webhook', (req, res) => {
     
 });
 
-function getTiempo(){
-   var url = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=174d1966288642ebb61162416181710&q=${city}&format=json&num_of_days=1`;
-       request(url, function(error, response, body) {
-        // Convertimos a JSON, la respuesta del servicio
-        let _body = JSON.parse(body);
-           console.log("hola"+_body);
-    });
-
-}
 const server = app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
