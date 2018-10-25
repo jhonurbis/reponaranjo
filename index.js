@@ -22,6 +22,7 @@ app.post('/webhook', (req, res) => {
 	//var url = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=174d1966288642ebb61162416181710&q=${city}&format=json&num_of_days=1`;
 
   	respuesta=getTiempo(city);
+	console.log("url-api"+respuesta);
     
     
     
