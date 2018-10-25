@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const request = require('request');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -26,12 +28,24 @@ app.post('/webhook', (req, res) => {
     //Send out an email that new feedback has come in
     res.status(200).json({
        fulfillmentText: "la ciudad introducida es "+city,
-        source: 'Hotel Feedback System'});
+        source: 'timpo Feedback System'});
+    
+    
+    
 
     
     
 });
 
+function getTiempo(){
+   var url = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=174d1966288642ebb61162416181710&q=${city}&format=json&num_of_days=1`;
+       request(url, function(error, response, body) {
+        // Convertimos a JSON, la respuesta del servicio
+        let _body = JSON.parse(body);
+           console.log("hola"+_body);
+    });
+
+}
 const server = app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
