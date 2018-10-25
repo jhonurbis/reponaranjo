@@ -24,7 +24,10 @@ app.post('/webhook', (req, res) => {
   
   request(url, function (error, response, body) {
   let respose = JSON.parse(body);
-  console.log('respuesta', response);
+  let temperatura = response['data']['weather'][0];
+      
+ //let location = response['data']['request'][0];
+  console.log('tempe', temperatura);
  //console.log('error:', error); // Print the error if one occurred
   //console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
   //console.log('body:', body); // Print the HTML for the Google homepage.
@@ -34,7 +37,7 @@ app.post('/webhook', (req, res) => {
     var urlApi = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=174d1966288642ebb61162416181710&q=${city}&format=json&num_of_days=1`;
       
     // let url = `http://api.openweathermap.org/data/2.5/forecast?q=${ubicacion}&APPID=apikey`;
-    console.log("url-api"+urlApi);
+   // console.log("url-api"+urlApi);
   
     
     //Persist this in some database
