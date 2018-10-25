@@ -52,7 +52,7 @@ var result;
   function cb (error, response, body) {
   let resJson = JSON.parse(body);
   let temperatura = resJson['data']['weather'][0]['maxtempC'];
-	  result=temperatura;
+  result=resJson['data']['weather'][0]['maxtempC'];
       
   console.log('tempe', temperatura);
    console.log('error:', error); // Print the error if one occurred
