@@ -47,10 +47,10 @@ app.post('/webhook', (req, res) => {
 
 var result;
 function getTiempo(ciudad){
-	result=undefined;
+	
 	var url = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=174d1966288642ebb61162416181710&q=${ciudad}&format=json&num_of_days=1`;
-	var reqst=request(url,cb);
-	return reqst;
+	result=request(url,cb);
+	return result;
 }
 
   function cb (error, response, body) {
@@ -58,7 +58,7 @@ function getTiempo(ciudad){
   let temperatura = resJson['data']['weather'][0]['maxtempC'];
       
   console.log('tempe', temperatura);
-	console.log('error:', error); // Print the error if one occurred
+   console.log('error:', error); // Print the error if one occurred
   //console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
   //console.log('body:', body); // Print the HTML for the Google homepage.
 }
