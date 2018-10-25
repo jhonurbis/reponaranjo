@@ -19,7 +19,7 @@ app.post('/webhook', (req, res) => {
     console.log(req.body);
     console.log(req.body.queryResult.parameters["geo-city"]);
     var city = req.body.queryResult.parameters["geo-city"];// json que envia dialogflow
-    
+    getTiempo();
     var urlApi = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=174d1966288642ebb61162416181710&q=${city}&format=json&num_of_days=1`;
 // let url = `http://api.openweathermap.org/data/2.5/forecast?q=${ubicacion}&APPID=apikey`;
     console.log("url-api"+urlApi);
