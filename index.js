@@ -20,7 +20,7 @@ app.post('/webhook', (req, res) => {
     //Persist this in some database
     //Send out an email that new feedback has come in
     res.status(200).json({
-       fulfillmentText: "la ciudad introducida es",
+       fulfillmentText: "la ciudad introducida es "+city,
         source: 'Hotel Feedback System'});
 
     
