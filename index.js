@@ -23,8 +23,8 @@ app.post('/webhook', (req, res) => {
 
   
   request(url, function (error, response, body) {
-  let response = JSON.parse(body);
-  let temperatura = response['data']['weather'][0];
+  let resJson = JSON.parse(body);
+  let temperatura = resJson['data']['weather'][0];
       
  //let location = response['data']['request'][0];
   console.log('tempe', temperatura);
