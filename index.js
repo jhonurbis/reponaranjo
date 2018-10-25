@@ -21,7 +21,7 @@ app.post('/webhook', (req, res) => {
     var city = req.body.queryResult.parameters["geo-city"];// json que envia dialogflow
 	//var url = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=174d1966288642ebb61162416181710&q=${city}&format=json&num_of_days=1`;
 
-  	respuesta=getTiempo();
+  	respuesta=getTiempo(city);
     
     
     
@@ -40,8 +40,8 @@ app.post('/webhook', (req, res) => {
     
 });
 
-function getTiempo(){
-	var url = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=174d1966288642ebb61162416181710&q=${city}&format=json&num_of_days=1`;
+function getTiempo(ciudad){
+	var url = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=174d1966288642ebb61162416181710&q=${ciudad}&format=json&num_of_days=1`;
 
   request(url, function (error, response, body) {
   let resJson = JSON.parse(body);
