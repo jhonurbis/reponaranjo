@@ -16,7 +16,12 @@ app.get('/', (req, res) => {
 app.post('/webhook', (req, res) => {
     console.log(req.body);
     console.log(req.body.queryResult.parameters["geo-city"]);
-    var city = req.body.queryResult.parameters["geo-city"];
+    var city = req.body.queryResult.parameters["geo-city"];// json que envia dialogflow
+    
+    var urlApi = 'http://api.worldweatheronline.com/premium/v1/weather.ashx?key=174d1966288642ebb61162416181710&q=${city}&format=json&num_of_days=1';
+
+    console.log(urlApi);
+    
     //Persist this in some database
     //Send out an email that new feedback has come in
     res.status(200).json({
